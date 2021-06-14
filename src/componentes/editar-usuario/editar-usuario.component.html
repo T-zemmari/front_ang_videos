@@ -1,8 +1,61 @@
-<div class="col-md-12 mt-3" >
+<div class="col-md-12 mt-3">
 
-    <h1>{{page_title}}</h1>
+
+    <h3>{{page_title}}</h3>
     <hr>
-    
+
+    <div class="alert alert-success col-mf-5 mt-3" *ngIf="status == 'Success'">
+       Los Datos Se Han Actualizado Correctamente
+    </div>
+    <div class="alert alert-danger col-mf-5 mt-3" *ngIf="status == 'error'">
+       No Se ha podido actualizar los datos, intentalo mas tarde, Gracias
+    </div>
+
+    <form class="col-md-5 ml=0 pl=0" #editarUsuarioForm="ngForm" (ngSubmit)="onSubmit(editarUsuarioForm)">
+        <div class="form-group">
+
+            <label for="name">Nombre</label>
+            <input class="form-control" type="text" name="name" #name="ngModel" [(ngModel)]="user.name" required
+                pattern="[a-zA-Z]+">
+            <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+                El nombre no es valido
+            </small>
+
+
+            <label for="lastname">Apellidos</label>
+            <input class="form-control" type="text" name="lastname" #lastname="ngModel" [(ngModel)]="user.lastname"
+                required pattern="^[a-zA-Z\u00C0-\u00FF]+(([',. -][a-zA-Z\u00C0-\u00FF ])?[a-zA-Z\u00C0-\u00FF]*)*$">
+            <small *ngIf="!lastname.valid && lastname.touched" class="invalid-feedback d-block">
+                Los apellidos no son validos
+            </small>
+
+
+            <label for="email">Correo electronico</label>
+            <input class="form-control" type="email" name="email" #email="ngModel" [(ngModel)]="user.email" required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+                El email no es valido
+            </small>
+
+
+            
+
+        </div>
+
+
+        <input type="submit" value="Acualizar Mis Datos" class="btn btn-success" [disabled]="!editarUsuarioForm.valid">
+
+    </form>
+
+
+
+
+
+
+
+
+
+
 
 
 </div>

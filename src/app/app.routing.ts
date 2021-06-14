@@ -20,6 +20,7 @@ const appRoutes : Routes = [
     {path :'inicio' , component: HomeComponent},
     {path :'login' , component: LoginComponent},
     {path :'logout/:sure' , component: LoginComponent}, 
+    {path :'mis-videos' , component: EditarUsuarioComponent,canActivate:[IdentityGuard]}, 
     {path :'videos-favoritos' , component: GuardarVideosComponent,canActivate:[IdentityGuard]}, 
     {path :'editar-usuario' , component: EditarUsuarioComponent,canActivate:[IdentityGuard]}, 
     {path :'register' , component: RegisterComponent}, 
