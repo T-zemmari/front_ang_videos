@@ -3,6 +3,8 @@ import { User } from '../../Models/User';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../app/Services/user.service.';
 
+import { Router , ActivatedRoute, Params} from '@angular/router';
+
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -20,7 +22,9 @@ export class LoginComponent implements OnInit {
 
 
   constructor(
-    private _userService: UserService
+    private _userService: UserService,
+    private _router :Router,
+    private _route:ActivatedRoute
   ) {
     this.page_title = "Identificate";
     this.user = new User(1, "", "", "", "", "ROLE_USER", "");
@@ -62,6 +66,20 @@ export class LoginComponent implements OnInit {
 
                 console.log(this.identity);
                 console.log(this.token);
+
+
+                // guardar los datos en el localstorage//
+
+
+                localStorage.setItem('token',this.token);
+                localStorage.setItem('identity',JSON.stringify(this.identity));
+
+
+                //redireccion:
+
+                this._router.navigate(['/']);
+
+
 
 
 
