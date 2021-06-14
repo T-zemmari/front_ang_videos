@@ -1,7 +1,25 @@
-<div class="col-md-12 mt-3" >
+<div class="col-md-12 mt-3" *ngIf="identity">
 
     <h1>{{page_title}}</h1>
     
 
 
 </div>
+
+<div class="col-md-12 mt-3" *ngIf="!identity">
+
+    <div class="jumbotron">
+        <h1 class="display-4">Bienvenido a FaYot</h1>
+        <p class="lead">Registrate en la web para poder guardar tus videos favoritos de youtube y verlos mas adelante.</p>
+        <hr class="my-4">
+       
+        <p class="lead">
+          <a class="btn btn-primary btn-lg ml-3 " [routerLink]="['/login']" role="button">Identificate</a>
+          <a class="btn btn-success btn-lg ml-3" [routerLink]="['/register']" role="button">Registrate</a>
+        </p>
+      </div>
+    
+
+
+</div>
+

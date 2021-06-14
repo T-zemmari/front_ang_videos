@@ -11,6 +11,12 @@ import { RegisterComponent } from '../componentes/register/register.component';
 import { ErrorComponent } from '../componentes/error/error.component';
 import { LoginComponent } from '../componentes/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { EditarUsuarioComponent } from '../componentes/editar-usuario/editar-usuario.component';
+import { GuardarVideosComponent } from '../componentes/guardar-videos/guardar-videos.component';
+
+
+import {UserService} from '../app/Services/user.service.';
+import {IdentityGuard} from '../app/Services/identity.guard';
 
 
 
@@ -22,6 +28,8 @@ import { FormsModule } from '@angular/forms';
     RegisterComponent,
     ErrorComponent,
     LoginComponent,
+    EditarUsuarioComponent,
+    GuardarVideosComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +37,12 @@ import { FormsModule } from '@angular/forms';
     routing,
     HttpClientModule
   ],
-  providers: [appRoutingProviders],
+  providers: [
+    appRoutingProviders,
+    IdentityGuard,
+    UserService
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

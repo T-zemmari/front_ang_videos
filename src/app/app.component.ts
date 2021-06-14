@@ -1,4 +1,4 @@
-import { Component , OnInit , DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { UserService } from './Services/user.service.';
 
 
@@ -7,9 +7,9 @@ import { UserService } from './Services/user.service.';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers:[UserService]
+  providers: [UserService]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'vang';
 
   public identity;
@@ -17,30 +17,23 @@ export class AppComponent implements OnInit{
 
 
   constructor(
-    private _userService : UserService
-  ){
+    private _userService: UserService
+  ) {
+
+  }
+  ngOnInit() {
 
   }
 
-
-
-  ngOnInit(){
-
-   
-
-
-
-  }
-
-  ngDoCheck(){
+  ngDoCheck() {
     this.loadService();
 
   }
 
 
-  loadService(){
+  loadService() {
 
-    this.identity= this._userService.getIdentity();
+    this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
   }
 }
