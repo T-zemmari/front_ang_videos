@@ -16,8 +16,8 @@
 
 
             <label for="lastname">Apellidos</label>
-            <input class="form-control" type="text" name="lastname" #lastname="ngModel" [(ngModel)]="user.lastname" required
-                pattern="[a-zA-Z]+">
+            <input class="form-control" type="text" name="lastname" #lastname="ngModel" [(ngModel)]="user.lastname"
+                required pattern="^[a-zA-Z\u00C0-\u00FF]+(([',. -][a-zA-Z\u00C0-\u00FF ])?[a-zA-Z\u00C0-\u00FF]*)*$">
             <small *ngIf="!lastname.valid && lastname.touched" class="invalid-feedback d-block">
                 Los apellidos no son validos
             </small>
@@ -32,8 +32,8 @@
 
 
             <label for="password">Contraseña</label>
-            <input class="form-control" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required
-                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+            <input class="form-control" type="password" name="password" #password="ngModel" [(ngModel)]="user.password"
+                required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
             <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
                 Minimo 8 caracteres 1 numero y una letra
             </small>
@@ -41,7 +41,7 @@
         </div>
 
 
-        <input type="submit" value="Regisrtrame" class="btn btn-success" [disabled]="!registerForm.valid" >
+        <input type="submit" value="Regisrtrame" class="btn btn-success" [disabled]="!registerForm.valid">
 
     </form>
 

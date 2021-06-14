@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { routing ,appRoutingProviders} from './app.routing';
 
+import {HttpClientModule} from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from '../componentes/home/home.component';
 import { RegisterComponent } from '../componentes/register/register.component';
@@ -24,7 +26,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
-    routing
+    routing,
+    HttpClientModule
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
