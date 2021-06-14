@@ -1,4 +1,4 @@
-import { Component , OnInit } from '@angular/core';
+import { Component , OnInit , DoCheck } from '@angular/core';
 import { UserService } from './Services/user.service.';
 
 
@@ -26,9 +26,14 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
 
-   this.loadService();
+   
 
 
+
+  }
+
+  ngDoCheck(){
+    this.loadService();
 
   }
 

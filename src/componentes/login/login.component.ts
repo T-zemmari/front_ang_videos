@@ -3,7 +3,9 @@ import { User } from '../../Models/User';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../app/Services/user.service.';
 
-import { Router , ActivatedRoute, Params} from '@angular/router';
+import { Router , ActivatedRoute} from '@angular/router';
+import { Params } from '@angular/router';
+
 
 @Component({
   selector: 'login',
@@ -19,6 +21,7 @@ export class LoginComponent implements OnInit {
   public user: User;
   public token: string;
   public identity;
+ 
 
 
   constructor(
@@ -30,7 +33,9 @@ export class LoginComponent implements OnInit {
     this.user = new User(1, "", "", "", "", "ROLE_USER", "");
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+    this.logout();
   }
 
   onSubmit(form) {
@@ -112,6 +117,27 @@ export class LoginComponent implements OnInit {
         console.log(error)
       }
     );
+  }
+
+  logout(){
+
+    this._route.params.subscribe(params =>{
+
+       let sure = params['sure'];
+       console.log(sure)
+
+       if(sure == 1){
+
+         localStorage.removeItem('identity');
+         localStorage.removeItem('token');
+
+         this.identity = null;
+         this.token= null;
+
+         this._router.navigate(['/inicio']);
+       }
+
+    });
   }
 
 }
