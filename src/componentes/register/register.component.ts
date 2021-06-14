@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
      constructor() {
 
     this.page_title="Registro";
-    this.user = new User(1,"","","","ROLE_USER","","");
+    this.user = new User(1,"","","","","ROLE_USER","");
     
     
    }

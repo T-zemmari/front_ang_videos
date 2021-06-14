@@ -1,29 +1,49 @@
-
 <div class="col-md-12 mt-3">
 
 
-<h3>{{page_title}}</h3>
-<hr>
+    <h3>{{page_title}}</h3>
+    <hr>
 
-<form class="col-md-5 ml=0 pl=0" #registerForm="ngForm" (ngSubmit)= "onSubmit(registerForm)"   >
-<div class="form-group">
+    <form class="col-md-5 ml=0 pl=0" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+        <div class="form-group">
 
-   <label for="name">Nombre</label>
-   <input class="form-control" type="text" name="name" #name="ngModel" [(ngModel)]="user.name"  required pattern="[a-zA-Z]+" >
-   <small *ngIf="!name.valid && name.touched">
-       El nombre no es valido
-   </small>
-
-   
-
+            <label for="name">Nombre</label>
+            <input class="form-control" type="text" name="name" #name="ngModel" [(ngModel)]="user.name" required
+                pattern="[a-zA-Z]+">
+            <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+                El nombre no es valido
+            </small>
 
 
-</div>
+            <label for="lastname">Apellidos</label>
+            <input class="form-control" type="text" name="lastname" #lastname="ngModel" [(ngModel)]="user.lastname" required
+                pattern="[a-zA-Z]+">
+            <small *ngIf="!lastname.valid && lastname.touched" class="invalid-feedback d-block">
+                Los apellidos no son validos
+            </small>
 
 
+            <label for="email">Correo electronico</label>
+            <input class="form-control" type="email" name="email" #email="ngModel" [(ngModel)]="user.email" required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+                El email no es valido
+            </small>
 
 
-</form>
+            <label for="password">Contraseña</label>
+            <input class="form-control" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required
+                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+            <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
+                Minimo 8 caracteres 1 numero y una letra
+            </small>
+
+        </div>
+
+
+        <input type="submit" value="Regisrtrame" class="btn btn-success" [disabled]="!registerForm.valid" >
+
+    </form>
 
 
 
