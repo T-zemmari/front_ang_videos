@@ -42,7 +42,7 @@ export class GuardarVideosComponent implements OnInit {
 
   ngOnInit(){
 
-    this.video = new Video(1,this.identiy.sub,"","","","","");
+    this.video = new Video(this.identiy.sub,"","","","","");
 
 
   }
