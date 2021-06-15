@@ -14,9 +14,13 @@
           <div class="video image w-100" *ngIf ="video.url">
            <img src="{{getThumb(video.url)}}" class="w-100">
           </div>
+          <div class="video image w-100" *ngIf ="!video.url">
+            <img src="{{getThumb(video.url,'default')}}" class="w-100">
+           </div>
+
          <div class="video-buttons mt-3">
-          <a href="#" class="btn btn-success mr-2">Ver</a>
-          <a href="#" class="btn btn-warning mr-2">Editar</a>
+          <a href="{{video.url}}" target="_blank" class="btn btn-success mr-2">Ver</a>
+          <a [routerLink]="['/']" class="btn btn-warning mr-2">Editar</a>
           <a href="#" class="btn btn-danger mr-2">Borrar</a>
          </div>
 
