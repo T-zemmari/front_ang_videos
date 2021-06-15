@@ -33,8 +33,8 @@ export class GuardarVideosComponent implements OnInit {
 
     this.page_title = " Guardar Mis videos Favoritos"
 
-    this.identiy= this._userService.getIdentity;
-    this.token=this._userService.getToken;
+    this.identiy= this._userService.getIdentity();
+    this.token=this._userService.getToken();
   
 
   
@@ -42,7 +42,7 @@ export class GuardarVideosComponent implements OnInit {
 
   ngOnInit(){
 
-    this.video = new Video(this.identiy.sub,"","","","","");
+    this.video = new Video(1,this.identiy.sub,"","","","",null,null);
 
 
   }
@@ -50,16 +50,15 @@ export class GuardarVideosComponent implements OnInit {
   onSubmit(form){
 
     console.log(this.video)
-    let token = this._userService.getToken();
-    let identity = this._userService.getIdentity();
+    
 
-    this._videoService.guardar(token,this.video).subscribe(
+    this._videoService.guardar(this.token,this.video).subscribe(
 
       response => {
 
         if(response.status == 'Success'){
           this.status='success';
-          form.reset();
+        
           console.log(response)
         }else{
           this.status='error',
