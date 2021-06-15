@@ -1,8 +1,66 @@
 <div class="col-md-12 mt-3">
 
-    <h1>{{page_title}}</h1>
+
+    <h3>{{page_title}}</h3>
     <hr>
-    
+
+    <div class="alert alert-success col-mf-5 mt-3" *ngIf="status == 'Success'">
+        El video Se Ha Guardado Correctamente
+    </div>
+    <div class="alert alert-danger col-mf-5 mt-3" *ngIf="status == 'error'">
+        No Se Ha Podido Guardar El Video
+    </div>
+
+    <form class="col-md-5 ml=0 pl=0" #guardarVideosForm="ngForm" (ngSubmit)="onSubmit(guardarVideosForm)">
+        <div class="form-group">
+
+            <label for="title">Titulo</label>
+            <input class="form-control" type="text" name="title" #title="ngModel" [(ngModel)]="video.title" required
+                >
+            <small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+                El nombre no es valido
+            </small>
+
+
+            <label for="description">Description</label>
+            <textarea class="form-control" type="text" name="description" #description="ngModel" [(ngModel)]="video.description"
+                required></textarea>
+            <small *ngIf="!description.valid && description.touched" class="invalid-feedback d-block">
+                Escribe una descripcion
+            </small>
+
+
+            <label for="url">Url</label>
+            <input class="form-control" type="text" name="url" #url="ngModel" [(ngModel)]="video.url" required
+            >
+            <small *ngIf="!url.valid && url.touched" class="invalid-feedback d-block">
+                Formato de la url no valido
+            </small>
+
+
+            <label for="status">Estado</label>
+            <input class="form-control" type="text" name="status" #status="ngModel" [(ngModel)]="video.status">
+               
+            <small *ngIf="!status.valid && status.touched" class="invalid-feedback d-block">
+                Escribe un estado
+            </small>
+
+        </div>
+
+
+        <input type="submit" value="Guardar" class="btn btn-success" [disabled]="!guardarVideosForm.valid">
+
+    </form>
+
+
+
+
+
+
+
+
+
+
 
 
 </div>
